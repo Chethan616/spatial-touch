@@ -1,0 +1,53 @@
+{
+  "camera": {
+    "device_index": 0,
+    "resolution": [1280, 720],
+    "fps": 30,
+    "auto_reconnect": true,
+    "reconnect_delay": 2.0,
+    "warmup_frames": 10
+  },
+  "tracking": {
+    "max_hands": 1,
+    "min_detection_confidence": 0.7,
+    "min_tracking_confidence": 0.5,
+    "model_complexity": 1,
+    "smoothing_factor": 0.4,
+    "static_image_mode": false
+  },
+  "gestures": {
+    "pinch_threshold": 0.05,
+    "debounce_ms": 200,
+    "hold_time_ms": 300,
+    "click_release_ms": 200,
+    "velocity_threshold": 0.01
+  },
+  "cursor": {
+    "screen_width": 1920,
+    "screen_height": 1080,
+    "sensitivity": 1.0,
+    "dead_zone": 0.02,
+    "invert_x": true,
+    "invert_y": false,
+    "margin": 10,
+    "smoothing": 0.0
+  },
+  "actions": {
+    "enable_mouse": true,
+    "enable_keyboard": true,
+    "move_duration": 0.0,
+    "click_interval": 0.1,
+    "scroll_amount": 3,
+    "safe_mode": true
+  },
+  "system": {
+    "log_level": "INFO",
+    "log_file": "logs/spatial_touch.log",
+    "debug_mode": false,
+    "idle_fps": 5,
+    "active_fps": 30,
+    "idle_timeout_frames": 30,
+    "run_on_startup": false,
+    "show_tray_icon": true
+  }
+}

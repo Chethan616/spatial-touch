@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "gestures": [
+    {
+      "id": "cursor_move",
+      "name": "Cursor Movement",
+      "description": "Move cursor using index finger position",
+      "enabled": true,
+      "trigger": {
+        "type": "finger_position",
+        "finger": "index_tip"
+      },
+      "action": {
+        "type": "mouse_move"
+      }
+    },
+    {
+      "id": "left_click",
+      "name": "Left Click",
+      "description": "Click by pinching thumb and index finger",
+      "enabled": true,
+      "trigger": {
+        "type": "pinch",
+        "fingers": ["thumb_tip", "index_tip"],
+        "threshold": 0.05
+      },
+      "action": {
+        "type": "mouse_click",
+        "button": "left"
+      },
+      "timing": {
+        "debounce_ms": 200,
+        "max_hold_ms": 300
+      }
+    },
+    {
+      "id": "right_click",
+      "name": "Right Click",
+      "description": "Right click by pinching thumb and middle finger",
+      "enabled": true,
+      "trigger": {
+        "type": "pinch",
+        "fingers": ["thumb_tip", "middle_tip"],
+        "threshold": 0.05
+      },
+      "action": {
+        "type": "mouse_click",
+        "button": "right"
+      },
+      "timing": {
+        "debounce_ms": 200
+      }
+    },
+    {
+      "id": "drag",
+      "name": "Drag and Drop",
+      "description": "Hold pinch to drag",
+      "enabled": true,
+      "trigger": {
+        "type": "pinch_hold",
+        "fingers": ["thumb_tip", "index_tip"],
+        "threshold": 0.05,
+        "hold_time_ms": 300
+      },
+      "action": {
+        "type": "mouse_drag"
+      }
+    },
+    {
+      "id": "scroll_up",
+      "name": "Scroll Up",
+      "description": "Scroll up gesture",
+      "enabled": false,
+      "trigger": {
+        "type": "swipe",
+        "direction": "up",
+        "fingers": 2
+      },
+      "action": {
+        "type": "scroll",
+        "direction": "up",
+        "amount": 3
+      }
+    },
+    {
+      "id": "scroll_down",
+      "name": "Scroll Down",
+      "description": "Scroll down gesture",
+      "enabled": false,
+      "trigger": {
+        "type": "swipe",
+        "direction": "down",
+        "fingers": 2
+      },
+      "action": {
+        "type": "scroll",
+        "direction": "down",
+        "amount": 3
+      }
+    }
+  ],
+  "zones": [
+    {
+      "id": "screen_top",
+      "name": "Top Edge",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1,
+        "height": 0.1
+      },
+      "actions": {
+        "on_enter": null,
+        "on_exit": null,
+        "on_dwell": null
+      }
+    },
+    {
+      "id": "screen_bottom",
+      "name": "Bottom Edge",
+      "bounds": {
+        "x": 0,
+        "y": 0.9,
+        "width": 1,
+        "height": 0.1
+      },
+      "actions": {
+        "on_enter": null,
+        "on_exit": null,
+        "on_dwell": null
+      }
+    }
+  ],
+  "profiles": {
+    "default": {
+      "name": "Default Profile",
+      "gestures": ["cursor_move", "left_click", "right_click", "drag"]
+    },
+    "presentation": {
+      "name": "Presentation Mode",
+      "gestures": ["cursor_move", "left_click"],
+      "overrides": {
+        "cursor": {
+          "sensitivity": 1.5
+        }
+      }
+    }
+  }
+}

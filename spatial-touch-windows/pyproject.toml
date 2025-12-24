@@ -1,0 +1,146 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spatial-touch"
+version = "0.1.0"
+description = "Touchless computer control using hand gestures"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.11"
+authors = [
+    {name = "Spatial Touch Contributors", email = "contact@spatialtouch.dev"}
+]
+maintainers = [
+    {name = "Spatial Touch Contributors", email = "contact@spatialtouch.dev"}
+]
+keywords = [
+    "hand-tracking",
+    "gesture-recognition",
+    "computer-vision",
+    "mediapipe",
+    "accessibility",
+    "touchless",
+    "mouse-control"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Human Machine Interfaces",
+    "Topic :: System :: Hardware",
+    "Topic :: Utilities",
+    "Typing :: Typed"
+]
+dependencies = [
+    "opencv-python>=4.8.0",
+    "mediapipe>=0.10.0",
+    "pyautogui>=0.9.54",
+    "numpy>=1.24.0",
+    "pynput>=1.7.6",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "mypy>=1.5.0",
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "black>=23.0.0",
+    "pylint>=2.17.0",
+    "isort>=5.12.0",
+    "pre-commit>=3.4.0",
+]
+tray = [
+    "pystray>=0.19.0",
+    "Pillow>=10.0.0",
+]
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/spatial-touch/spatial-touch-windows"
+Documentation = "https://spatial-touch.github.io/spatial-touch-windows"
+Repository = "https://github.com/spatial-touch/spatial-touch-windows.git"
+Issues = "https://github.com/spatial-touch/spatial-touch-windows/issues"
+Changelog = "https://github.com/spatial-touch/spatial-touch-windows/blob/main/CHANGELOG.md"
+
+[project.scripts]
+spatial-touch = "spatial_touch.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+    | \.venv
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 100
+skip_gitignore = true
+known_first_party = ["spatial_touch"]
+
+[tool.pylint.main]
+jobs = 0
+load-plugins = ["pylint.extensions.docparams"]
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-module-docstring",
+    "too-few-public-methods",
+]
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+strict_optional = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["src/spatial_touch"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+]
