@@ -4,7 +4,7 @@ A professional, open-source Windows application for touchless computer control u
 
 ## 📁 Project Structure
 
-```
+``` 
 ST/
 ├── spatial-touch-windows/     # Python Backend
 │   ├── src/spatial_touch/     # Core application
